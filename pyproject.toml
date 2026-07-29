@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "indie-game-match-history-database"
+version = "1.1.0"
+description = "Production-grade historical match-history database engine for indie multiplayer games: data models, ELO/Glicko-2 ratings, tiered storage, leaderboards, replay blobs, and GDPR/COPPA retention."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "indie-game-match-history-database contributors" }]
+keywords = ["games", "matchmaking", "elo", "glicko", "leaderboard", "match-history", "indie", "database", "gdpr", "privacy"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Database",
+    "Topic :: Games/Entertainment",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+crawl = ["requests>=2.31.0", "feedparser>=6.0.10", "python-dateutil>=2.8.2"]
+dev = ["pytest>=7.4", "pytest-cov>=4.1"]
+all = ["requests>=2.31.0", "feedparser>=6.0.10", "python-dateutil>=2.8.2", "pytest>=7.4", "pytest-cov>=4.1"]
+
+[project.scripts]
+imh = "indie_match_history.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/indie-game-match-history-database/indie-game-match-history-database"
+Issues = "https://github.com/indie-game-match-history-database/indie-game-match-history-database/issues"
+
+[tool.setuptools.packages.find]
+include = ["indie_match_history*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
+filterwarnings = ["error::UserWarning"]

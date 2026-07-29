@@ -1,0 +1,6 @@
+# Core engine has zero runtime dependencies (pure stdlib).
+# Optional crawl / dev extras are declared in pyproject.toml.
+requests>=2.31.0
+feedparser>=6.0.10
+python-dateutil>=2.8.2
+pytest>=7.4
